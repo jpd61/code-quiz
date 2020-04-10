@@ -5,7 +5,6 @@ var quizCount = 0;
 var setTime;
 var answers = document.querySelectorAll('#quizHolder button');
 var clock;
-
 var recordsArray = [];
 
 // found where I can use ? in lieu of an if statement: https://medium.com/javascript-in-plain-english/what-does-the-question-mark-mean-in-javascript-code-353cfadcf760
@@ -44,10 +43,10 @@ var recordsHtmlReset = () => {
 
 var setQuestionData = () => {
 	queryElement('#quizHolder p').innerHTML = questions[quizCount].title;
-	queryElement('#quizHolder button:nth-of-type(1)').innerHTML = `1. ${questions[quizCount].choices[0]}`;
-	queryElement('#quizHolder button:nth-of-type(2)').innerHTML = `2. ${questions[quizCount].choices[1]}`;
-	queryElement('#quizHolder button:nth-of-type(3)').innerHTML = `3. ${questions[quizCount].choices[2]}`;
-	queryElement('#quizHolder button:nth-of-type(4)').innerHTML = `4. ${questions[quizCount].choices[3]}`;
+	queryElement('#quizHolder btn1').innerHTML = `1. ${questions[quizCount].choices[0]}`;
+	queryElement('#quizHolder btn2').innerHTML = `2. ${questions[quizCount].choices[1]}`;
+	queryElement('#quizHolder btn3').innerHTML = `3. ${questions[quizCount].choices[2]}`;
+	queryElement('#quizHolder btn4').innerHTML = `4. ${questions[quizCount].choices[3]}`;
 }
 
 var quizUpdate = (answerCopy) => {
