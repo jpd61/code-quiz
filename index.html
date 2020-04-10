@@ -10,16 +10,57 @@
 
 <body>
 
-    <div class="header">
-        <h2 id="high-scores">View High Scores</h2>
+    <div id="controls">
+        <div id="info">
+          <button id="scores" href="">View High Scores</button>
+          <div id="timer"><p>Time: <span id="time">0</span></p></div>
+        </div>
     </div>
-    
-    <div class="container">
-        <h1 class="welcome">Welcome to Code Quiz</h1>
-        <h2 id="countdown"></h1>
-        <h3 id="main"></h2>
+        
+      
+    <div id="positionWrapper">
+        <section id="intro">
+          <h1>Coding Quiz Challenge</h1>
+          <p>Answer the following code-related questions within the time limit. Incorrect answers will penalize your remaining time by five seconds.</p>
+
+          <button>Start Quiz</button>
+      
+        </section>
+      
+        <section id="quizHolder" class="hide">
+          <p id="title"></p>
+          <button></button>
+          <button></button>
+          <button></button>
+          <button></button>
+          <div id="scoreAlert" class="invisible">
+            <p>&nbsp;</p>
+          </div>
+        </section>
+      
+        <section id="finish" class="hide">
+          <h1>All Done</h1>
+          <p>Your final score is&nbsp;<span id="score"></span></p>
+          <div id="records">
+            <p>Enter initials: </p><input id="initials" type="text"> <button>Submit</button>
+          </div>
+          <div id="errorAlert" class="invisible">
+            <p>&nbsp;</p>
+          </div>
+        </section>
+      
+        <section id="highScores" class="hide">
+          <h1>High Scores</h1>
+          <div>
+      
+          </div>
+          <button id="reset">Go Back</button> <button id="clearScores">Clear High Scores</button>
+        </section>
     </div>
 
-    <script src="./assets/js/script.js"></script>
+      
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/questions.js"></script>
 </body>
+
 </html>
