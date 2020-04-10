@@ -41,6 +41,7 @@ var recordsHtmlReset = () => {
 	});
 }
 
+//nth-of-type is working better than assigning an individual button id
 var setQuestionData = () => {
 	queryElement('#quizHolder p').innerHTML = questions[quizCount].title;
 	queryElement('#quizHolder button:nth-of-type(1)').innerHTML = `1. ${questions[quizCount].choices[0]}`;

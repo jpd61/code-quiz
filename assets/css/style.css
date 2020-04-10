@@ -16,7 +16,7 @@ html,body{
     margin:5px 0;
 }
   
-#positionWrapper{
+#quizHolder{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -127,7 +127,7 @@ button:hover{
   
 @media only screen and (min-width: 768px) {
   
-    #positionWrapper{
+    #quizHolder{
       min-height: calc(100% - 82px)
     }
   
