@@ -16,7 +16,7 @@ html,body{
     margin:5px 0;
 }
   
-#quizHolder{
+#quizBody{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -103,7 +103,7 @@ button:hover{
     margin: 10px auto;
 }
   
-#scoreAlert p, #errorAlert p{
+#scoreAlert p, #errorIndicator p{
     margin:0;
     margin-top:10px;
 }
@@ -127,7 +127,7 @@ button:hover{
   
 @media only screen and (min-width: 768px) {
   
-    #quizHolder{
+    #quizBody{
       min-height: calc(100% - 82px)
     }
   
