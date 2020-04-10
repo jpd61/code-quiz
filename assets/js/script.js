@@ -11,20 +11,20 @@ var recordsArray = [];
 (localStorage.getItem('recordsArray')) ? recordsArray = JSON.parse(localStorage.getItem('recordsArray')): recordsArray = [];
 
 
-var queryElement = (element) => {
+var queryElement = function(element) {
 	return document.querySelector(element);
 }
 
-var onlyDisplaySection = (element) => {
+var onlyDisplaySection = function(element) {
 	let sections = document.querySelectorAll("section");
-	Array.from(sections).forEach((userItem) => {
+	Array.from(sections).forEach(function(userItem) {
 		userItem.classList.add('hide');
 	});
 	queryElement(element).classList.remove('hide');
 }
 
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from
-var recordsHtmlReset = () => {
+var recordsHtmlReset = function() {
 	queryElement('#highScores div').innerHTML = "";
 	var i = 1;
 	recordsArray.sort((a, b) => b.score - a.score);
@@ -42,7 +42,7 @@ var recordsHtmlReset = () => {
 }
 
 //nth-of-type is working better than assigning an individual button
-var setQuestionData = () => {
+var setQuestionData = function() {
 	queryElement('#quizHolder p').innerHTML = questions[quizCount].title;
 	queryElement('#quizHolder button:nth-of-type(1)').innerHTML = `1. ${questions[quizCount].choices[0]}`;
 	queryElement('#quizHolder button:nth-of-type(2)').innerHTML = `2. ${questions[quizCount].choices[1]}`;
@@ -50,7 +50,7 @@ var setQuestionData = () => {
 	queryElement('#quizHolder button:nth-of-type(4)').innerHTML = `4. ${questions[quizCount].choices[3]}`;
 }
 
-var quizUpdate = (answerCopy) => {
+var quizUpdate = function(answerCopy) {
 	queryElement('#scoreAlert p').innerHTML = answerCopy;
 	queryElement('#scoreAlert').classList.remove('invisible', scoreAlert());
 	Array.from(answers).forEach(answer =>
@@ -58,7 +58,7 @@ var quizUpdate = (answerCopy) => {
 		answer.classList.add('disable');
 	});
 
-	setTimeout(() => {
+	setTimeout(function() {
 		if (quizCount === questions.length) {
 			onlyDisplaySection("#finish");
 			time = 0;
@@ -72,7 +72,7 @@ var quizUpdate = (answerCopy) => {
 	}, 1000);
 }
 
-var myTimer = () => {
+var myTimer = function() {
 	if (time > 0) {
 		time = time - 1;
 		queryElement('#time').innerHTML = time;
@@ -83,15 +83,15 @@ var myTimer = () => {
 	}
 }
 
-queryElement("#intro button").addEventListener("click", (e) => {
+queryElement("#intro button").addEventListener("click", function(e) {
     setQuestionData();
 	onlyDisplaySection("#quizHolder");
 	clock = setInterval(myTimer, 1000);
 });
 
-var scoreAlert = () => {
+var scoreAlert = function() {
 	clearTimeout(setTime);
-	setTime = setTimeout(() => {
+	setTime = setTimeout(function() {
 		queryElement('#scoreAlert').classList.add('invisible');
 	}, 1000);
 }
@@ -112,14 +112,14 @@ Array.from(answers).forEach(check => {
 });
 
 // submit high scores
-var errorAlert = () => {
+var errorAlert = function() {
 	clearTimeout(setTime);
-	setTime = setTimeout(() => {
+	setTime = setTimeout(function() {
 		queryElement('#errorAlert').classList.add('invisible');
 	}, 3000);
 }
 
-queryElement("#records button").addEventListener("click", () => {
+queryElement("#records button").addEventListener("click", function() {
 	let initialsRecord = queryElement('#initials').value;
 	if (initialsRecord === ''){
 		queryElement('#errorAlert p').innerHTML = "You need at least 1 character";
@@ -146,14 +146,14 @@ queryElement("#records button").addEventListener("click", () => {
 
 
 
-queryElement("#clearScores").addEventListener("click", () => {
+queryElement("#clearScores").addEventListener("click", function() {
 	recordsArray = [];
 	queryElement('#highScores div').innerHTML = "";
 	localStorage.removeItem('recordsArray');
 });
 
 // quiz reset
-queryElement("#reset").addEventListener("click", () => {
+queryElement("#reset").addEventListener("click", function() {
 	time = initialTime;
 	score = 0;
 	quizCount = 0;
@@ -161,7 +161,7 @@ queryElement("#reset").addEventListener("click", () => {
 });
 
 // pause quiz for high score view
-queryElement("#scores").addEventListener("click", (e) => {
+queryElement("#scores").addEventListener("click", function(e) {
 	e.preventDefault();
 	clearInterval(clock);
 	queryElement('#time').innerHTML = 0;
