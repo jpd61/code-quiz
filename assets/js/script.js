@@ -4,6 +4,7 @@ var score = 0;
 var quizCount = 0;
 var setTime;
 var answers = document.querySelectorAll('#quizHolder button');
+var clock;
 
 var recordsArray = [];
 
@@ -81,8 +82,6 @@ var myTimer = () => {
 	}
 }
 
-	
-var clock;
 queryElement("#intro button").addEventListener("click", (e) => {
     setQuestionData();
 	onlyDisplaySection("#quizHolder");
@@ -96,7 +95,7 @@ var scoreAlert = () => {
 	}, 1000);
 }
 
-
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from
 Array.from(answers).forEach(check => {
 	check.addEventListener('click', function (event) {
 		if (this.innerHTML.substring(3, this.length) === questions[quizCount].answer) {

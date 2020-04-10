@@ -1,8 +1,8 @@
 var questions = [
     {
         title: "What is the HTML tag under which one can write the JavaScript code?",
-        choices: ["<javascript>", "<scripted>", "<script>", "<js>"],
-        answer: "<script>"
+        choices: ["javascript", "scripted", "script", "js"],
+        answer: "script"
     },
     {
         title: "Which choice is not a common JavaScript Data Type?",
