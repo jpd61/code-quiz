@@ -24,6 +24,7 @@ var onlyDisplaySection = function(element) {
 }
 
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from
+// https://www.w3schools.com/js/js_arrow_function.asp
 var recordsHtmlReset = function() {
 	queryElement('#highScores div').innerHTML = "";
 	var i = 1;
