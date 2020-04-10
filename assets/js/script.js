@@ -24,6 +24,7 @@ var onlyDisplaySection = (element) => {
 	queryElement(element).classList.remove('hide');
 }
 
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from
 var recordsHtmlReset = () => {
 	queryElement('#highScores div').innerHTML = "";
 	var i = 1;
