@@ -15,6 +15,11 @@ var questions = [
         answer: "parentheses"
     },
     {
+        title: "JavaScript is a _______Side Scripting Language.",
+        choices: ["server", "ISP", "browser", "none of the above"],
+        answer: "browser"
+    },
+    {
         title: "Arrays in JavaScript can be used to store:",
         choices: ["numbers and strings", "other arrays", "booleans", "all of the above"],
         answer: "all of the above"
