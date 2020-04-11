@@ -1,5 +1,5 @@
 html,body{
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Arial';
     height:100%;
 }
   
@@ -15,7 +15,9 @@ html,body{
 #highScores button{
     margin:5px 0;
 }
-  
+
+/* https://developer.mozilla.org/en-US/docs/Web/CSS/calc */
+
 #quizBody{
     display: flex;
     flex-direction: column;
@@ -59,6 +61,8 @@ section{
     text-align:center;
 }
   
+/* https://developer.mozilla.org/en-US/docs/Web/CSS/cursor */
+
 button{
     background-color:darkgreen;
     color:white;
@@ -75,7 +79,6 @@ button:hover{
 #quizHolder #title{
     font-weight:700;
 }
-  
   
 #quizHolder button{
     background-color:darkgreen;
@@ -119,6 +122,8 @@ button:hover{
     visibility:hidden;
 }
   
+/* https://developer.mozilla.org/en-US/docs/Web/CSS/pointer-events */
+
 .disable{
   pointer-events:none;
 }
