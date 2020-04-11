@@ -13,7 +13,7 @@ var recordsArray = [];
 
 var queryElement = function(element) {
 	return document.querySelector(element);
-}
+};
 
 var onlyDisplaySection = function(element) {
 	let sections = document.querySelectorAll("section");
@@ -21,7 +21,7 @@ var onlyDisplaySection = function(element) {
 		userItem.classList.add('hide');
 	});
 	queryElement(element).classList.remove('hide');
-}
+};
 
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from
 // https://www.w3schools.com/js/js_arrow_function.asp
@@ -40,16 +40,16 @@ var recordsHtmlReset = function() {
 	Array.from(answers).forEach(answer => {
 		answer.classList.remove('disable');
 	});
-}
+};
 
-//nth-of-type is working better than assigning an individual button
+//nth-of-type is working better than assigning an individual button id: https://www.w3schools.com/cssref/sel_nth-of-type.asp
 var setQuestionData = function() {
 	queryElement('#quizHolder p').innerHTML = questions[quizCount].title;
 	queryElement('#quizHolder button:nth-of-type(1)').innerHTML = `1. ${questions[quizCount].choices[0]}`;
 	queryElement('#quizHolder button:nth-of-type(2)').innerHTML = `2. ${questions[quizCount].choices[1]}`;
 	queryElement('#quizHolder button:nth-of-type(3)').innerHTML = `3. ${questions[quizCount].choices[2]}`;
 	queryElement('#quizHolder button:nth-of-type(4)').innerHTML = `4. ${questions[quizCount].choices[3]}`;
-}
+};
 
 var quizUpdate = function(answerCopy) {
 	queryElement('#scoreAlert p').innerHTML = answerCopy;
@@ -71,7 +71,7 @@ var quizUpdate = function(answerCopy) {
 			});
 		}
 	}, 1000);
-}
+};
 
 var myTimer = function() {
 	if (time > 0) {
@@ -82,7 +82,7 @@ var myTimer = function() {
 		queryElement('#score').innerHTML = score;
 		onlyDisplaySection("#finish");
 	}
-}
+};
 
 queryElement("#intro button").addEventListener("click", function(e) {
     setQuestionData();
@@ -95,7 +95,7 @@ var scoreAlert = function() {
 	setTime = setTimeout(function() {
 		queryElement('#scoreAlert').classList.add('invisible');
 	}, 1000);
-}
+};
 
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from
 Array.from(answers).forEach(check => {
@@ -118,7 +118,7 @@ var errorAlert = function() {
 	setTime = setTimeout(function() {
 		queryElement('#errorAlert').classList.add('invisible');
 	}, 3000);
-}
+};
 
 queryElement("#records button").addEventListener("click", function() {
 	let initialsRecord = queryElement('#initials').value;
