@@ -15,6 +15,17 @@ var queryElement = function(element) {
 	return document.querySelector(element);
 };
 
+var myTimer = function() {
+	if (time > 0) {
+		time = time - 1;
+		queryElement('#time').innerHTML = time;
+	} else {
+		clearInterval(clock);
+		queryElement('#score').innerHTML = score;
+		onlyDisplaySection("#finish");
+	}
+};
+
 var onlyDisplaySection = function(element) {
 	let sections = document.querySelectorAll("section");
 	Array.from(sections).forEach(function(userItem) {
@@ -71,17 +82,6 @@ var quizUpdate = function(answerCopy) {
 			});
 		}
 	}, 1000);
-};
-
-var myTimer = function() {
-	if (time > 0) {
-		time = time - 1;
-		queryElement('#time').innerHTML = time;
-	} else {
-		clearInterval(clock);
-		queryElement('#score').innerHTML = score;
-		onlyDisplaySection("#finish");
-	}
 };
 
 var scoreAlert = function() {
