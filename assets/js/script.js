@@ -30,16 +30,7 @@ var onlyDisplaySection = function(element) {
 	});
 	pageContentEl(element).classList.remove('hide');
 };
-
-//nth-of-type is working better than assigning an individual button id: https://www.w3schools.com/cssref/sel_nth-of-type.asp
-var setQuestionData = function() {
-	pageContentEl('#quizHolder p').innerHTML = questions[quizCount].title;
-	pageContentEl('#quizHolder button:nth-of-type(1)').innerHTML = `1. ${questions[quizCount].choices[0]}`;
-	pageContentEl('#quizHolder button:nth-of-type(2)').innerHTML = `2. ${questions[quizCount].choices[1]}`;
-	pageContentEl('#quizHolder button:nth-of-type(3)').innerHTML = `3. ${questions[quizCount].choices[2]}`;
-	pageContentEl('#quizHolder button:nth-of-type(4)').innerHTML = `4. ${questions[quizCount].choices[3]}`;
-};
-
+s
 var quizUpdate = function(answerCopy) {
 	pageContentEl('#scoreAlert p').innerHTML = answerCopy;
 	pageContentEl('#scoreAlert').classList.remove('invisible', scoreAlert());
@@ -60,6 +51,15 @@ var quizUpdate = function(answerCopy) {
 			});
 		}
 	}, 1000);
+};
+
+//nth-of-type is working better than assigning an individual button id: https://www.w3schools.com/cssref/sel_nth-of-type.asp
+var setQuestionData = function() {
+	pageContentEl('#quizHolder p').innerHTML = questions[quizCount].title;
+	pageContentEl('#quizHolder button:nth-of-type(1)').innerHTML = `1. ${questions[quizCount].choices[0]}`;
+	pageContentEl('#quizHolder button:nth-of-type(2)').innerHTML = `2. ${questions[quizCount].choices[1]}`;
+	pageContentEl('#quizHolder button:nth-of-type(3)').innerHTML = `3. ${questions[quizCount].choices[2]}`;
+	pageContentEl('#quizHolder button:nth-of-type(4)').innerHTML = `4. ${questions[quizCount].choices[3]}`;
 };
 
 var scoreAlert = function() {
