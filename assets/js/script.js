@@ -139,6 +139,19 @@ var startQuiz = function () {
 	clock = setInterval(myTimer, 1000);
 };
 
+// https://teamtreehouse.com/community/dont-understand-the-meaning-of-functione
+// https://stackoverflow.com/questions/35936365/what-exactly-is-the-parameter-e-event-and-why-pass-it-to-javascript-functions
+var viewHighScores = function (e) {
+	e.preventDefault();
+	clearInterval(clock);
+	pageContentEl('#time').innerHTML = 0;
+	time = initialTime;
+	score = 0;
+	quizCount = 0;
+	onlyDisplaySection("#highScores");
+	recordsHtmlReset();
+};
+
 // found where I can use ? in lieu of an if statement: https://medium.com/javascript-in-plain-english/what-does-the-question-mark-mean-in-javascript-code-353cfadcf760
 (localStorage.getItem('recordsArray')) ? recordsArray = JSON.parse(localStorage.getItem('recordsArray')): recordsArray = [];
 
@@ -165,15 +178,5 @@ pageContentEl("#clearScores").addEventListener("click", clearHighScores);
 
 pageContentEl("#reset").addEventListener("click", quizReset);
 
-// pause quiz for high score view
-pageContentEl("#scores").addEventListener("click", function(e) {
-	e.preventDefault();
-	clearInterval(clock);
-	pageContentEl('#time').innerHTML = 0;
-	time = initialTime;
-	score = 0;
-	quizCount = 0;
-	onlyDisplaySection("#highScores");
-	recordsHtmlReset();
-});
+pageContentEl("#scores").addEventListener("click", viewHighScores);
 
