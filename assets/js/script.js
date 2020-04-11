@@ -34,7 +34,7 @@ var recordsHtmlReset = function() {
 		var scores = document.createElement("div");
 		scores.innerHTML = i + ". " + check.initialRecord + " - " + check.score;
 		queryElement('#highScores div').appendChild(scores);
-		i = i + 1
+		i = i + 1;
 	});
 	i = 0;
 	Array.from(answers).forEach(answer => {
