@@ -7,9 +7,6 @@ var answers = document.querySelectorAll('#quizHolder button');
 var clock;
 var recordsArray = [];
 
-
-
-
 var queryElement = function(element) {
 	return document.querySelector(element);
 };
