@@ -95,6 +95,31 @@ var errorAlert = function() {
 	}, 3000);
 };
 
+var enterInitials = function() {
+	let initialsRecord = pageContentEl('#initials').value;
+	if (initialsRecord === ''){
+		pageContentEl('#errorAlert p').innerHTML = "You need at least 1 character";
+		pageContentEl('#errorAlert').classList.remove('invisible', errorAlert());
+	} else if (initialsRecord.match(/[[A-Za-z]/) === null) {
+		pageContentEl('#errorAlert p').innerHTML = "Only letters for initials allowed.";
+		pageContentEl('#errorAlert').classList.remove('invisible', errorAlert());
+	} else if (initialsRecord.length > 5) {
+		pageContentEl('#errorAlert p').innerHTML = "Maximum of 5 characters allowed.";
+		pageContentEl('#errorAlert').classList.remove('invisible', errorAlert());
+	} else {
+		recordsArray.push({
+			"initialRecord": initialsRecord,
+			"score": score
+		});
+		
+		localStorage.setItem('recordsArray', JSON.stringify(recordsArray));
+		pageContentEl('#highScores div').innerHTML = '';
+		onlyDisplaySection("#highScores");
+		recordsHtmlReset();
+		pageContentEl("#initials").value = '';
+		}
+};
+
 // found where I can use ? in lieu of an if statement: https://medium.com/javascript-in-plain-english/what-does-the-question-mark-mean-in-javascript-code-353cfadcf760
 (localStorage.getItem('recordsArray')) ? recordsArray = JSON.parse(localStorage.getItem('recordsArray')): recordsArray = [];
 
@@ -119,30 +144,7 @@ pageContentEl("#intro button").addEventListener("click", function(e) {
 	clock = setInterval(myTimer, 1000);
 });
 
-pageContentEl("#records button").addEventListener("click", function() {
-	let initialsRecord = pageContentEl('#initials').value;
-	if (initialsRecord === ''){
-		pageContentEl('#errorAlert p').innerHTML = "You need at least 1 character";
-		pageContentEl('#errorAlert').classList.remove('invisible', errorAlert());
-	} else if (initialsRecord.match(/[[A-Za-z]/) === null) {
-		pageContentEl('#errorAlert p').innerHTML = "Only letters for initials allowed.";
-		pageContentEl('#errorAlert').classList.remove('invisible', errorAlert());
-	} else if (initialsRecord.length > 5) {
-		pageContentEl('#errorAlert p').innerHTML = "Maximum of 5 characters allowed.";
-		pageContentEl('#errorAlert').classList.remove('invisible', errorAlert());
-	} else {
-		recordsArray.push({
-			"initialRecord": initialsRecord,
-			"score": score
-		});
-		
-		localStorage.setItem('recordsArray', JSON.stringify(recordsArray));
-		pageContentEl('#highScores div').innerHTML = '';
-		onlyDisplaySection("#highScores");
-		recordsHtmlReset();
-		pageContentEl("#initials").value = '';
-		}
-});
+pageContentEl("#records button").addEventListener("click", enterInitials);
 
 pageContentEl("#clearScores").addEventListener("click", function() {
 	recordsArray = [];
