@@ -27,7 +27,7 @@ var onlyDisplaySection = function(element) {
 // https://www.w3schools.com/js/js_arrow_function.asp
 var recordsHtmlReset = function() {
 	queryElement('#highScores div').innerHTML = "";
-	var i = 1;
+	let i = 1;
 	recordsArray.sort((a, b) => b.score - a.score);
 	Array.from(recordsArray).forEach(check =>
 	{
@@ -84,17 +84,19 @@ var myTimer = function() {
 	}
 };
 
-queryElement("#intro button").addEventListener("click", function(e) {
-    setQuestionData();
-	onlyDisplaySection("#quizHolder");
-	clock = setInterval(myTimer, 1000);
-});
-
 var scoreAlert = function() {
 	clearTimeout(setTime);
 	setTime = setTimeout(function() {
 		queryElement('#scoreAlert').classList.add('invisible');
 	}, 1000);
+};
+
+// submit high scores
+var errorAlert = function() {
+	clearTimeout(setTime);
+	setTime = setTimeout(function() {
+		queryElement('#errorAlert').classList.add('invisible');
+	}, 3000);
 };
 
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from
@@ -112,13 +114,11 @@ Array.from(answers).forEach(check => {
 	});
 });
 
-// submit high scores
-var errorAlert = function() {
-	clearTimeout(setTime);
-	setTime = setTimeout(function() {
-		queryElement('#errorAlert').classList.add('invisible');
-	}, 3000);
-};
+queryElement("#intro button").addEventListener("click", function(e) {
+    setQuestionData();
+	onlyDisplaySection("#quizHolder");
+	clock = setInterval(myTimer, 1000);
+});
 
 queryElement("#records button").addEventListener("click", function() {
 	let initialsRecord = queryElement('#initials').value;
@@ -144,8 +144,6 @@ queryElement("#records button").addEventListener("click", function() {
 		queryElement("#initials").value = '';
 		}
 });
-
-
 
 queryElement("#clearScores").addEventListener("click", function() {
 	recordsArray = [];
