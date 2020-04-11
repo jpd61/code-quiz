@@ -107,7 +107,7 @@ Array.from(answers).forEach(check => {
 		}else{
 			time = time - 5;
 			quizCount = quizCount + 1;
-			quizUpdate("Wrong");
+			quizUpdate("Incorrect");
 		}
 	});
 });
