@@ -6,7 +6,7 @@ var setTime;
 var answers = document.querySelectorAll('#quizHolder button');
 var clock;
 var recordsArray = [];
-var randomQuestion = questions[Math.floor(math.random() * questions.length)];
+// var randomQuestion = questions[Math.floor(math.random() * questions.length)];
 
 var pageContentEl = function(element) {
 	return document.querySelector(element);
@@ -56,11 +56,11 @@ var quizUpdate = function(answerCopy) {
 
 //nth-of-type is working better than assigning an individual button id: https://www.w3schools.com/cssref/sel_nth-of-type.asp
 var setQuestionData = function() {
-	pageContentEl('#quizHolder p').innerHTML = randomQuestion[quizCount].title;
-	pageContentEl('#quizHolder button:nth-of-type(1)').innerHTML = `1. ${randomQuestion[quizCount].choices[0]}`;
-	pageContentEl('#quizHolder button:nth-of-type(2)').innerHTML = `2. ${randomQuestion[quizCount].choices[1]}`;
-	pageContentEl('#quizHolder button:nth-of-type(3)').innerHTML = `3. ${randomQuestion[quizCount].choices[2]}`;
-	pageContentEl('#quizHolder button:nth-of-type(4)').innerHTML = `4. ${randomQuestion[quizCount].choices[3]}`;
+	pageContentEl('#quizHolder p').innerHTML = questions[quizCount].title;
+	pageContentEl('#quizHolder button:nth-of-type(1)').innerHTML = `1. ${questions[quizCount].choices[0]}`;
+	pageContentEl('#quizHolder button:nth-of-type(2)').innerHTML = `2. ${questions[quizCount].choices[1]}`;
+	pageContentEl('#quizHolder button:nth-of-type(3)').innerHTML = `3. ${questions[quizCount].choices[2]}`;
+	pageContentEl('#quizHolder button:nth-of-type(4)').innerHTML = `4. ${questions[quizCount].choices[3]}`;
 };
 
 var scoreAlert = function() {
