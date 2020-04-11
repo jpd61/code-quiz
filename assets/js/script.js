@@ -6,9 +6,7 @@ var setTime;
 var answers = document.querySelectorAll('#quizHolder button');
 var clock;
 var recordsArray = [];
-var randomQuestion = function() {
-	questions[Math.floor(math.random() * questions.length)];
-};
+var randomQuestion = questions[Math.floor(math.random() * questions.length)];
 
 var pageContentEl = function(element) {
 	return document.querySelector(element);
