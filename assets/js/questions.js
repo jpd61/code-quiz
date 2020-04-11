@@ -30,7 +30,12 @@ var questions = [
         answer: "quotes"
     },
     {
-        title: "A very useful tool used during development and debugging for printing content to the debugger is:",
+        title: "Which of the following is an advantage of using JavaScript?",
+        choices: ["increased interactivity", "less server interaction", "immediate feedback from users", "all of the above"],
+        answer: "all of the above"
+    },
+    {
+        title: "Which of the following is a very useful tool used during development and debugging?",
         choices: ["JavaScript", "terminal/bash", "for loops", "console.log"],
         answer: "console.log"
     }
