@@ -133,6 +133,12 @@ var quizReset = function () {
 	onlyDisplaySection("#intro");
 };
 
+var startQuiz = function () {
+    setQuestionData();
+	onlyDisplaySection("#quizHolder");
+	clock = setInterval(myTimer, 1000);
+};
+
 // found where I can use ? in lieu of an if statement: https://medium.com/javascript-in-plain-english/what-does-the-question-mark-mean-in-javascript-code-353cfadcf760
 (localStorage.getItem('recordsArray')) ? recordsArray = JSON.parse(localStorage.getItem('recordsArray')): recordsArray = [];
 
@@ -151,11 +157,7 @@ Array.from(answers).forEach(check => {
 	});
 });
 
-pageContentEl("#intro button").addEventListener("click", function(e) {
-    setQuestionData();
-	onlyDisplaySection("#quizHolder");
-	clock = setInterval(myTimer, 1000);
-});
+pageContentEl("#intro button").addEventListener("click", startQuiz);
 
 pageContentEl("#records button").addEventListener("click", enterInitials);
 
