@@ -22,6 +22,7 @@ var myTimer = function() {
 	}
 };
 
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from
 var onlyDisplaySection = function(element) {
 	let sections = document.querySelectorAll("section");
 	Array.from(sections).forEach(function(userItem) {
@@ -30,7 +31,6 @@ var onlyDisplaySection = function(element) {
 	pageContentEl(element).classList.remove('hide');
 };
 
-// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from
 // https://www.w3schools.com/js/js_arrow_function.asp
 var recordsHtmlReset = function() {
 	pageContentEl('#highScores div').innerHTML = "";
