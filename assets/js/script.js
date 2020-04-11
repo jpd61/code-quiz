@@ -120,6 +120,12 @@ var enterInitials = function() {
 		}
 };
 
+var clearHighScores = function () {
+	recordsArray = [];
+	pageContentEl('#highScores div').innerHTML = "";
+	localStorage.removeItem('recordsArray');
+};
+
 // found where I can use ? in lieu of an if statement: https://medium.com/javascript-in-plain-english/what-does-the-question-mark-mean-in-javascript-code-353cfadcf760
 (localStorage.getItem('recordsArray')) ? recordsArray = JSON.parse(localStorage.getItem('recordsArray')): recordsArray = [];
 
@@ -146,11 +152,7 @@ pageContentEl("#intro button").addEventListener("click", function(e) {
 
 pageContentEl("#records button").addEventListener("click", enterInitials);
 
-pageContentEl("#clearScores").addEventListener("click", function() {
-	recordsArray = [];
-	pageContentEl('#highScores div').innerHTML = "";
-	localStorage.removeItem('recordsArray');
-});
+pageContentEl("#clearScores").addEventListener("click", clearHighScores);
 
 // quiz reset
 pageContentEl("#reset").addEventListener("click", function() {
