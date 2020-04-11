@@ -15,7 +15,7 @@ var questions = [
         answer: "parentheses"
     },
     {
-        title: "JavaScript is a _______Side Scripting Language.",
+        title: "JavaScript is a _______side scripting language.",
         choices: ["server", "ISP", "browser", "none of the above"],
         answer: "browser"
     },
