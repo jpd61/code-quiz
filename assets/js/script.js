@@ -7,17 +7,17 @@ var answers = document.querySelectorAll('#quizHolder button');
 var clock;
 var recordsArray = [];
 
-var queryElement = function(element) {
+var pageContentEl = function(element) {
 	return document.querySelector(element);
 };
 
 var myTimer = function() {
 	if (time > 0) {
 		time = time - 1;
-		queryElement('#time').innerHTML = time;
+		pageContentEl('#time').innerHTML = time;
 	} else {
 		clearInterval(clock);
-		queryElement('#score').innerHTML = score;
+		pageContentEl('#score').innerHTML = score;
 		onlyDisplaySection("#finish");
 	}
 };
@@ -27,20 +27,20 @@ var onlyDisplaySection = function(element) {
 	Array.from(sections).forEach(function(userItem) {
 		userItem.classList.add('hide');
 	});
-	queryElement(element).classList.remove('hide');
+	pageContentEl(element).classList.remove('hide');
 };
 
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from
 // https://www.w3schools.com/js/js_arrow_function.asp
 var recordsHtmlReset = function() {
-	queryElement('#highScores div').innerHTML = "";
+	pageContentEl('#highScores div').innerHTML = "";
 	let i = 1;
 	recordsArray.sort((a, b) => b.score - a.score);
 	Array.from(recordsArray).forEach(check =>
 	{
 		var scores = document.createElement("div");
 		scores.innerHTML = i + ". " + check.initialRecord + " - " + check.score;
-		queryElement('#highScores div').appendChild(scores);
+		pageContentEl('#highScores div').appendChild(scores);
 		i = i + 1;
 	});
 	i = 0;
@@ -51,16 +51,16 @@ var recordsHtmlReset = function() {
 
 //nth-of-type is working better than assigning an individual button id: https://www.w3schools.com/cssref/sel_nth-of-type.asp
 var setQuestionData = function() {
-	queryElement('#quizHolder p').innerHTML = questions[quizCount].title;
-	queryElement('#quizHolder button:nth-of-type(1)').innerHTML = `1. ${questions[quizCount].choices[0]}`;
-	queryElement('#quizHolder button:nth-of-type(2)').innerHTML = `2. ${questions[quizCount].choices[1]}`;
-	queryElement('#quizHolder button:nth-of-type(3)').innerHTML = `3. ${questions[quizCount].choices[2]}`;
-	queryElement('#quizHolder button:nth-of-type(4)').innerHTML = `4. ${questions[quizCount].choices[3]}`;
+	pageContentEl('#quizHolder p').innerHTML = questions[quizCount].title;
+	pageContentEl('#quizHolder button:nth-of-type(1)').innerHTML = `1. ${questions[quizCount].choices[0]}`;
+	pageContentEl('#quizHolder button:nth-of-type(2)').innerHTML = `2. ${questions[quizCount].choices[1]}`;
+	pageContentEl('#quizHolder button:nth-of-type(3)').innerHTML = `3. ${questions[quizCount].choices[2]}`;
+	pageContentEl('#quizHolder button:nth-of-type(4)').innerHTML = `4. ${questions[quizCount].choices[3]}`;
 };
 
 var quizUpdate = function(answerCopy) {
-	queryElement('#scoreAlert p').innerHTML = answerCopy;
-	queryElement('#scoreAlert').classList.remove('invisible', scoreAlert());
+	pageContentEl('#scoreAlert p').innerHTML = answerCopy;
+	pageContentEl('#scoreAlert').classList.remove('invisible', scoreAlert());
 	Array.from(answers).forEach(answer =>
 	{
 		answer.classList.add('disable');
@@ -70,7 +70,7 @@ var quizUpdate = function(answerCopy) {
 		if (quizCount === questions.length) {
 			onlyDisplaySection("#finish");
 			time = 0;
-			queryElement('#time').innerHTML = time;
+			pageContentEl('#time').innerHTML = time;
 		} else {
 			setQuestionData();
 			Array.from(answers).forEach(answer => {
@@ -83,7 +83,7 @@ var quizUpdate = function(answerCopy) {
 var scoreAlert = function() {
 	clearTimeout(setTime);
 	setTime = setTimeout(function() {
-		queryElement('#scoreAlert').classList.add('invisible');
+		pageContentEl('#scoreAlert').classList.add('invisible');
 	}, 1000);
 };
 
@@ -91,7 +91,7 @@ var scoreAlert = function() {
 var errorAlert = function() {
 	clearTimeout(setTime);
 	setTime = setTimeout(function() {
-		queryElement('#errorAlert').classList.add('invisible');
+		pageContentEl('#errorAlert').classList.add('invisible');
 	}, 3000);
 };
 
@@ -113,23 +113,23 @@ Array.from(answers).forEach(check => {
 	});
 });
 
-queryElement("#intro button").addEventListener("click", function(e) {
+pageContentEl("#intro button").addEventListener("click", function(e) {
     setQuestionData();
 	onlyDisplaySection("#quizHolder");
 	clock = setInterval(myTimer, 1000);
 });
 
-queryElement("#records button").addEventListener("click", function() {
-	let initialsRecord = queryElement('#initials').value;
+pageContentEl("#records button").addEventListener("click", function() {
+	let initialsRecord = pageContentEl('#initials').value;
 	if (initialsRecord === ''){
-		queryElement('#errorAlert p').innerHTML = "You need at least 1 character";
-		queryElement('#errorAlert').classList.remove('invisible', errorAlert());
+		pageContentEl('#errorAlert p').innerHTML = "You need at least 1 character";
+		pageContentEl('#errorAlert').classList.remove('invisible', errorAlert());
 	} else if (initialsRecord.match(/[[A-Za-z]/) === null) {
-		queryElement('#errorAlert p').innerHTML = "Only letters for initials allowed.";
-		queryElement('#errorAlert').classList.remove('invisible', errorAlert());
+		pageContentEl('#errorAlert p').innerHTML = "Only letters for initials allowed.";
+		pageContentEl('#errorAlert').classList.remove('invisible', errorAlert());
 	} else if (initialsRecord.length > 5) {
-		queryElement('#errorAlert p').innerHTML = "Maximum of 5 characters allowed.";
-		queryElement('#errorAlert').classList.remove('invisible', errorAlert());
+		pageContentEl('#errorAlert p').innerHTML = "Maximum of 5 characters allowed.";
+		pageContentEl('#errorAlert').classList.remove('invisible', errorAlert());
 	} else {
 		recordsArray.push({
 			"initialRecord": initialsRecord,
@@ -137,21 +137,21 @@ queryElement("#records button").addEventListener("click", function() {
 		});
 		
 		localStorage.setItem('recordsArray', JSON.stringify(recordsArray));
-		queryElement('#highScores div').innerHTML = '';
+		pageContentEl('#highScores div').innerHTML = '';
 		onlyDisplaySection("#highScores");
 		recordsHtmlReset();
-		queryElement("#initials").value = '';
+		pageContentEl("#initials").value = '';
 		}
 });
 
-queryElement("#clearScores").addEventListener("click", function() {
+pageContentEl("#clearScores").addEventListener("click", function() {
 	recordsArray = [];
-	queryElement('#highScores div').innerHTML = "";
+	pageContentEl('#highScores div').innerHTML = "";
 	localStorage.removeItem('recordsArray');
 });
 
 // quiz reset
-queryElement("#reset").addEventListener("click", function() {
+pageContentEl("#reset").addEventListener("click", function() {
 	time = initialTime;
 	score = 0;
 	quizCount = 0;
@@ -159,10 +159,10 @@ queryElement("#reset").addEventListener("click", function() {
 });
 
 // pause quiz for high score view
-queryElement("#scores").addEventListener("click", function(e) {
+pageContentEl("#scores").addEventListener("click", function(e) {
 	e.preventDefault();
 	clearInterval(clock);
-	queryElement('#time').innerHTML = 0;
+	pageContentEl('#time').innerHTML = 0;
 	time = initialTime;
 	score = 0;
 	quizCount = 0;
