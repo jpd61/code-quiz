@@ -20,6 +20,11 @@ var questions = [
         answer: "all of the above"
     },
     {
+        title: "Which of the following is not a reserved word in JavaScript?",
+        choices: ["interface", "throws", "program", "short"],
+        answer: "program"
+    },
+    {
         title: "String values must be enclosed within ______ when being assigned to variables.",
         choices: ["commas", "curly brackets", "quotes", "parentheses"],
         answer: "quotes"
