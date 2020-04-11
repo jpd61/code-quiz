@@ -1,5 +1,5 @@
-var initialTime = 75;
-var time = 75;
+var initialTime = 50;
+var time = 50;
 var score = 0;
 var quizCount = 0;
 var setTime;
@@ -152,23 +152,23 @@ var viewHighScores = function (e) {
 	recordsHtmlReset();
 };
 
+var scoreTimeAdjust = function () {
+	if (this.innerHTML.substring(3, this.length) === questions[quizCount].answer) {
+		score = score + 1;
+		quizCount = quizCount + 1;
+		quizUpdate("Correct");
+	}else{
+		time = time - 5;
+		quizCount = quizCount + 1;
+		quizUpdate("Incorrect");
+	}
+};
+
 // found where I can use ? in lieu of an if statement: https://medium.com/javascript-in-plain-english/what-does-the-question-mark-mean-in-javascript-code-353cfadcf760
 (localStorage.getItem('recordsArray')) ? recordsArray = JSON.parse(localStorage.getItem('recordsArray')): recordsArray = [];
 
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from
-Array.from(answers).forEach(check => {
-	check.addEventListener('click', function (event) {
-		if (this.innerHTML.substring(3, this.length) === questions[quizCount].answer) {
-			score = score + 1;
-			quizCount = quizCount + 1;
-			quizUpdate("Correct");
-		}else{
-			time = time - 5;
-			quizCount = quizCount + 1;
-			quizUpdate("Incorrect");
-		}
-	});
-});
+Array.from(answers).forEach(check => {check.addEventListener('click', scoreTimeAdjust);});
 
 pageContentEl("#intro button").addEventListener("click", startQuiz);
 
