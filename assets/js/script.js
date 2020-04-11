@@ -31,24 +31,6 @@ var onlyDisplaySection = function(element) {
 	pageContentEl(element).classList.remove('hide');
 };
 
-// https://www.w3schools.com/js/js_arrow_function.asp
-var recordsHtmlReset = function() {
-	pageContentEl('#highScores div').innerHTML = "";
-	let i = 1;
-	recordsArray.sort((a, b) => b.score - a.score);
-	Array.from(recordsArray).forEach(check =>
-	{
-		var scores = document.createElement("div");
-		scores.innerHTML = i + ". " + check.initialRecord + " - " + check.score;
-		pageContentEl('#highScores div').appendChild(scores);
-		i = i + 1;
-	});
-	i = 0;
-	Array.from(answers).forEach(answer => {
-		answer.classList.remove('disable');
-	});
-};
-
 //nth-of-type is working better than assigning an individual button id: https://www.w3schools.com/cssref/sel_nth-of-type.asp
 var setQuestionData = function() {
 	pageContentEl('#quizHolder p').innerHTML = questions[quizCount].title;
@@ -164,7 +146,26 @@ var scoreTimeAdjust = function () {
 	}
 };
 
+// https://www.w3schools.com/js/js_arrow_function.asp
+var recordsHtmlReset = function() {
+	pageContentEl('#highScores div').innerHTML = "";
+	let i = 1;
+	recordsArray.sort((a, b) => b.score - a.score);
+	Array.from(recordsArray).forEach(check =>
+	{
+		var scores = document.createElement("div");
+		scores.innerHTML = i + ". " + check.initialRecord + " - " + check.score;
+		pageContentEl('#highScores div').appendChild(scores);
+		i = i + 1;
+	});
+	i = 0;
+	Array.from(answers).forEach(answer => {
+		answer.classList.remove('disable');
+	});
+};
+
 // found where I can use ? in lieu of an if statement: https://medium.com/javascript-in-plain-english/what-does-the-question-mark-mean-in-javascript-code-353cfadcf760
+// https://www.geeksforgeeks.org/ternary-operator-question-mark-and-colon-in-javascript/
 // condition ? value if true : value if false
 (localStorage.getItem('recordsArray')) ? recordsArray = JSON.parse(localStorage.getItem('recordsArray')): recordsArray = [];
 
