@@ -25,3 +25,5 @@ https://medium.com/javascript-in-plain-english/what-does-the-question-mark-mean-
 https://www.geeksforgeeks.org/ternary-operator-question-mark-and-colon-in-javascript/
 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from
+
+https://www.w3schools.com/js/js_let.asp

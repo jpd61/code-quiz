@@ -6,6 +6,7 @@ var setTime;
 var answers = document.querySelectorAll('#quizHolder button');
 var clock;
 var recordsArray = [];
+
 // var randomQuestion = questions[Math.floor(math.random() * questions.length)];
 
 var pageContentEl = function(element) {
@@ -24,6 +25,7 @@ var myTimer = function() {
 };
 
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from
+
 var onlyDisplaySection = function(element) {
 	let sections = document.querySelectorAll("section");
 	Array.from(sections).forEach(function(userItem) {
@@ -55,6 +57,7 @@ var quizUpdate = function(answerCopy) {
 };
 
 //nth-of-type is working better than assigning an individual button id: https://www.w3schools.com/cssref/sel_nth-of-type.asp
+
 var setQuestionData = function() {
 	pageContentEl('#quizHolder p').innerHTML = questions[quizCount].title;
 	pageContentEl('#quizHolder button:nth-of-type(1)').innerHTML = `1. ${questions[quizCount].choices[0]}`;
@@ -70,7 +73,6 @@ var scoreAlert = function() {
 	}, 1000);
 };
 
-// submit high scores
 var errorAlert = function() {
 	clearTimeout(setTime);
 	setTime = setTimeout(function() {
@@ -123,7 +125,9 @@ var startQuiz = function () {
 };
 
 // https://teamtreehouse.com/community/dont-understand-the-meaning-of-functione
+
 // https://stackoverflow.com/questions/35936365/what-exactly-is-the-parameter-e-event-and-why-pass-it-to-javascript-functions
+
 var viewHighScores = function (e) {
 	e.preventDefault();
 	clearInterval(clock);
@@ -148,6 +152,7 @@ var scoreTimeAdjust = function () {
 };
 
 // https://www.w3schools.com/js/js_arrow_function.asp
+
 var recordsHtmlReset = function() {
 	pageContentEl('#highScores div').innerHTML = "";
 	let i = 1;
@@ -166,11 +171,15 @@ var recordsHtmlReset = function() {
 };
 
 // found where I can use ? in lieu of an if statement: https://medium.com/javascript-in-plain-english/what-does-the-question-mark-mean-in-javascript-code-353cfadcf760
+
 // https://www.geeksforgeeks.org/ternary-operator-question-mark-and-colon-in-javascript/
+
 // condition ? value if true : value if false
+
 (localStorage.getItem('recordsArray')) ? recordsArray = JSON.parse(localStorage.getItem('recordsArray')): recordsArray = [];
 
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from
+
 Array.from(answers).forEach(check => {check.addEventListener('click', scoreTimeAdjust);});
 
 pageContentEl("#intro button").addEventListener("click", startQuiz);
