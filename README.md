@@ -2,7 +2,7 @@
 
 https://jpd61.github.io/code-quiz/
 
-(a lot of googling - making progress)
+A lot of googling and research - making progress - tried numerous new concepts (to me) that seem to work?
 
 As much as I want this to look like the class example, being a Baylor Bear football player, I cannot use Purple!
 
