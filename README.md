@@ -8,7 +8,7 @@ As much as I want this to look like the class example, being a Baylor Bear footb
 
 <img src="./assets/screenshot.PNG" />
 
-## Research
+## Research (save for later)
 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from
 
@@ -27,3 +27,9 @@ https://www.geeksforgeeks.org/ternary-operator-question-mark-and-colon-in-javasc
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from
 
 https://www.w3schools.com/js/js_let.asp
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/calc
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/cursor
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/pointer-events

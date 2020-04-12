@@ -1,3 +1,8 @@
+:root {
+    --primary-color: darkgreen;
+    --secondary-color: darkgoldenrod;
+}
+
 html,body{
     font-family: 'Arial';
     height:100%;
@@ -9,7 +14,7 @@ html,body{
 }
   
 #highScores div div:nth-child(odd){
-    background-color:rgb(104, 189, 104);
+    background-color: rgb(104, 189, 104);
 }
   
 #highScores button{
@@ -47,13 +52,13 @@ section{
   
 #scores{
     left:40px;
-    background-color: darkgreen;
+    background-color: var(--primary-color);
     color: white;
 }
   
 #timer{
     right:40px;
-    color: darkgreen;
+    color: var(--primary-color);
     font-weight: bold;
 }
   
@@ -64,7 +69,7 @@ section{
 /* https://developer.mozilla.org/en-US/docs/Web/CSS/cursor */
 
 button{
-    background-color:darkgreen;
+    background-color: var(--primary-color);
     color:white;
     border: none;
     padding:5px;
@@ -73,7 +78,7 @@ button{
 }
   
 button:hover{
-    background-color: darkgoldenrod;
+    background-color: var(--secondary-color);
 }
   
 #quizHolder #title{
@@ -81,7 +86,7 @@ button:hover{
 }
   
 #quizHolder button{
-    background-color:darkgreen;
+    background-color: var(--primary-color);
     border-radius:5px;
     color:white;
     margin: 3px 0;
@@ -93,7 +98,7 @@ button:hover{
 }
   
 #quizHolder button:hover{
-    background-color: darkgoldenrod;
+    background-color: var(--secondary-color);
 }
   
 #scoreAlert, #errorAlert{
