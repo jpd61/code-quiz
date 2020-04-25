@@ -1,5 +1,11 @@
 # Coding Quiz
 
+![HTML5](https://img.shields.io/badge/HTML5-orange)
+![CSS](https://img.shields.io/badge/CSS-blue)
+![Javascript](https://img.shields.io/badge/Javascript-yellow)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-purple)
+
+
 https://jpd61.github.io/code-quiz/
 
 A lot of googling and research - making progress - tried numerous new concepts (to me) that seem to work?

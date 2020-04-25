@@ -7,6 +7,15 @@ var answers = document.querySelectorAll('#quizHolder button');
 var clock;
 var recordsArray = [];
 
+// developer console message
+var consoleMessage = () => {
+    let consoleMessage = `
+    Developed by Joseph DeWoody
+    https://jpd61.github.io/code-quiz/
+    `
+    console.log(consoleMessage);
+};
+
 // var randomQuestion = questions[Math.floor(math.random() * questions.length)];
 
 var pageContentEl = function(element) {
@@ -191,4 +200,6 @@ pageContentEl("#clearScores").addEventListener("click", clearHighScores);
 pageContentEl("#reset").addEventListener("click", quizReset);
 
 pageContentEl("#scores").addEventListener("click", viewHighScores);
+
+consoleMessage();
 
